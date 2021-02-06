@@ -4,7 +4,7 @@ from flask import Flask, request
 
 from task_repo import TaskRepository
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../build', static_url_path='/')
 
 task_repo = TaskRepository()
 
