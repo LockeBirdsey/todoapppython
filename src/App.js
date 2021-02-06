@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./App.css";
+import { Helmet } from "react-helmet";
 
 function App() {
   const [allTasks, setAllTasks] = useState(0);
@@ -178,15 +179,20 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h3>Tasks</h3>
-      <Tasks tasks={currentTasks} completed={false} />
-      <hr />
-      <h3>Completed Tasks</h3>
-      <Tasks tasks={completedTasks} completed={true} />
-      <hr />
-      <h3>Add Task</h3>
-      <AddTask />
+    <div>
+      <Helmet>
+        <title>Locke's Todo App</title>
+      </Helmet>
+      <div className="App">
+        <h3>Tasks</h3>
+        <Tasks tasks={currentTasks} completed={false} />
+        <hr />
+        <h3>Completed Tasks</h3>
+        <Tasks tasks={completedTasks} completed={true} />
+        <hr />
+        <h3>Add Task</h3>
+        <AddTask />
+      </div>
     </div>
   );
 }
