@@ -1,18 +1,20 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
+import os
 
 
 class TaskRepository:
     conn = None
-
+    DATABASE_URL = os.environ['DATABASE_URL']
     # Attempt to connect to the database
     def connect(self):
         try:
-            self.conn = psycopg2.connect(
-                host="localhost",
-                database="tododb",
-                user="postgres",
-                password="3f3qmkk7N)-POS")
+            self.conn = psycopg2.connect(self.DATABASE_URL, sslmode='require')
+            # self.conn = psycopg2.connect(
+            #     host="localhost",
+            #     database="tododb", #dfgm7t6b1o1cbf
+            #     user="postgres", #zvifbjmfhsqbxm
+            #     password="3f3qmkk7N)-POS") #ae36dac06743a98165c3d67e08a212b880165f2ae1fee10c0771cecddd36a893
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
 
